@@ -1,0 +1,848 @@
+:root {
+  --ink: #111111;
+  --ink-soft: #444444;
+  --muted: #6b6b6b;
+  --paper: #ffffff;
+  --grid: rgba(0, 0, 0, 0.12);
+  --grid-strong: rgba(0, 0, 0, 0.22);
+  --accent-bg: #f2f2f2;
+  --shadow: 2px 3px 0 rgba(0, 0, 0, 0.9);
+  --shadow-soft: 1px 2px 0 rgba(0, 0, 0, 0.7);
+  --radius: 4px;
+  --grid-size: 24px;
+
+  /* はい/勝ち = 赤 / いいえ/負け = 青 / 中立・注意 = 黄 */
+  --yes: #b9322c;
+  --yes-hover: #982821;
+  --yes-soft: #fbecea;
+  --no: #1f57a4;
+  --no-hover: #164180;
+  --no-soft: #ebf1fb;
+  --warn: #c48410;
+  --warn-hover: #9c6a0c;
+  --warn-soft: #fcf3dd;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Yomogi", "Klee One", "Kaisei Decol", "Yu Mincho", "YuMincho",
+               "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+  font-weight: 400;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.6;
+  /* 方眼紙風グリッド */
+  background-image:
+    linear-gradient(to right, var(--grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+  background-position: 0 0;
+}
+
+/* 5マスごとに太いグリッド線 */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(to right, var(--grid-strong) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-strong) 1px, transparent 1px);
+  background-size: calc(var(--grid-size) * 5) calc(var(--grid-size) * 5);
+}
+
+body > * { position: relative; z-index: 1; }
+
+a { color: var(--ink); text-decoration: underline wavy; }
+
+/* ---------- Header ---------- */
+.site-header {
+  background: var(--paper);
+  border-bottom: 2px solid var(--ink);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.header-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.header-inner h1 {
+  font-size: 22px;
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.header-inner h1.brand-home {
+  cursor: pointer;
+  user-select: none;
+}
+.header-inner h1.brand-home:hover {
+  text-decoration: underline dashed var(--ink);
+  text-underline-offset: 6px;
+}
+.nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.nav button {
+  font-size: 13px;
+  padding: 6px 12px;
+}
+
+/* ---------- Main ---------- */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+}
+
+.site-footer {
+  text-align: center;
+  color: var(--muted);
+  padding: 16px;
+  font-size: 12px;
+  border-top: 1px dashed var(--ink);
+  background: var(--paper);
+}
+
+/* ---------- Ads ---------- */
+.ad-slot {
+  max-width: 960px;
+  margin: 12px auto;
+  padding: 0 16px;
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ad-placeholder {
+  display: block;
+  width: 100%;
+  min-height: 90px;
+  background: var(--paper);
+  border: 2px dashed var(--ink);
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+  line-height: 90px;
+  border-radius: var(--radius);
+}
+
+/* ---------- Panels & Cards ---------- */
+.panel {
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+.panel h2 {
+  margin-top: 0;
+  font-size: 20px;
+  font-weight: 600;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 6px;
+  margin-bottom: 12px;
+  letter-spacing: 0.03em;
+}
+.panel h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  border-left: 4px solid var(--ink);
+  padding-left: 8px;
+}
+
+.muted { color: var(--muted); font-size: 13px; }
+
+/* ---------- Forms ---------- */
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--ink);
+}
+input[type="text"],
+input[type="number"],
+input[type="file"],
+select,
+textarea {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 15px;
+  font-family: inherit;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
+}
+input:focus, select:focus, textarea:focus {
+  outline: 2px dashed var(--ink);
+  outline-offset: 2px;
+}
+.form-row { margin-bottom: 12px; }
+.form-inline {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+.form-inline > * { flex: 1; }
+.form-inline > button { flex: 0 0 auto; }
+
+/* ---------- Buttons ---------- */
+button {
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.05s ease, box-shadow 0.05s ease, background 0.1s ease;
+}
+button:hover { background: var(--accent-bg); }
+button:active {
+  transform: translate(1px, 2px);
+  box-shadow: none;
+}
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+  background: repeating-linear-gradient(
+    45deg, var(--paper), var(--paper) 4px, #eee 4px, #eee 8px);
+}
+button.primary {
+  background: var(--yes);
+  color: var(--paper);
+  border-color: var(--yes);
+}
+button.primary:hover { background: var(--yes-hover); border-color: var(--yes-hover); }
+button.danger {
+  background: var(--paper);
+  color: var(--no);
+  border-color: var(--no);
+  border-style: dashed;
+}
+button.danger:hover { background: var(--no-soft); }
+button.ghost {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  color: var(--muted);
+}
+button.ghost:hover { background: var(--accent-bg); }
+button.small { font-size: 12px; padding: 4px 10px; }
+
+.button-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+/* ---------- Tables ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+}
+th, td {
+  padding: 8px 10px;
+  text-align: left;
+  border: 1px solid var(--ink);
+}
+th {
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+tbody tr:nth-child(even) { background: #f7f7f7; }
+tbody tr:hover { background: #ececec; }
+
+.table-wrap { overflow-x: auto; }
+
+/* ---------- Player list ---------- */
+.player-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.player-chip {
+  background: var(--paper);
+  color: var(--ink);
+  padding: 4px 10px;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: var(--shadow-soft);
+}
+.player-chip.dropped {
+  background: #eee;
+  color: var(--muted);
+  text-decoration: line-through;
+  border-style: dashed;
+  box-shadow: none;
+}
+.player-chip button {
+  background: transparent;
+  border: none;
+  padding: 0 2px;
+  color: inherit;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: none;
+  font-weight: 700;
+}
+
+/* ---------- Matches ---------- */
+.match {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  margin-bottom: 10px;
+  background: var(--paper);
+  box-shadow: var(--shadow-soft);
+}
+.match.bye {
+  background: repeating-linear-gradient(
+    -45deg, var(--paper), var(--paper) 6px, var(--warn-soft) 6px, var(--warn-soft) 12px);
+  border-color: var(--warn);
+}
+.match .name {
+  font-weight: 600;
+  font-size: 16px;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+  text-underline-offset: 4px;
+}
+.match .name.right { text-align: right; }
+.match .name.winner {
+  text-decoration: underline solid var(--yes);
+  text-decoration-thickness: 3px;
+}
+.match .name.loser {
+  text-decoration: underline solid var(--no);
+  text-decoration-thickness: 3px;
+}
+.match .name.drawn {
+  text-decoration: underline dashed var(--warn);
+  text-decoration-thickness: 2px;
+}
+.match .vs {
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  padding: 2px 6px;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  background: var(--paper);
+}
+.match .result-buttons {
+  grid-column: 1 / 4;
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+.match .result-buttons button.selected {
+  background: var(--yes);
+  color: var(--paper);
+  border-color: var(--yes);
+}
+.match .result-buttons .draw.selected {
+  background: var(--warn);
+  color: var(--paper);
+  border-color: var(--warn);
+  border-style: dashed;
+}
+
+/* ---------- Tournament list ---------- */
+.tournament-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  margin-bottom: 10px;
+  background: var(--paper);
+  box-shadow: var(--shadow-soft);
+}
+.tournament-card:hover { background: var(--accent-bg); }
+.tournament-meta {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ---------- Badges ---------- */
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+  margin-left: 4px;
+}
+.badge.in-progress {
+  background: var(--ink);
+  color: var(--paper);
+}
+.badge.finished {
+  background: var(--paper);
+  color: var(--ink);
+  border-style: double;
+  border-width: 3px;
+}
+.badge.registration {
+  background: var(--paper);
+  color: var(--ink);
+  border-style: dashed;
+}
+
+/* ---------- Tabs (大会進行ページ) ---------- */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 16px;
+  border-bottom: 2px solid var(--ink);
+  padding: 0 4px;
+}
+.tabs .tab {
+  background: var(--paper);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  border-bottom: none;
+  border-radius: var(--radius) var(--radius) 0 0;
+  padding: 8px 16px;
+  margin-bottom: -2px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: none;
+}
+.tabs .tab.active {
+  background: var(--ink);
+  color: var(--paper);
+}
+.tabs .tab:hover:not(.active) {
+  background: var(--accent-bg);
+}
+
+/* ---------- Select ---------- */
+select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--ink) 50%),
+    linear-gradient(135deg, var(--ink) 50%, transparent 50%);
+  background-position: calc(100% - 16px) 50%, calc(100% - 10px) 50%;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 28px;
+}
+
+/* ---------- Create Bar (一覧ページ上部) ---------- */
+.create-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+.create-bar button {
+  font-size: 15px;
+  padding: 10px 18px;
+}
+
+/* ---------- Back Row (戻るボタン) ---------- */
+.back-row {
+  margin-bottom: 12px;
+}
+.back-row button {
+  border-style: dashed;
+  border-color: var(--no);
+  color: var(--no);
+  background: transparent;
+  box-shadow: none;
+}
+.back-row button:hover {
+  background: var(--no-soft);
+}
+
+/* ---------- 図説 (diagrams) ---------- */
+.diag {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 10px;
+  margin-top: 6px;
+  background: var(--paper);
+  border: 1.5px dashed var(--ink);
+  border-radius: var(--radius);
+}
+.diag-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 13px;
+}
+.diag-row.small {
+  font-size: 11px;
+  color: var(--muted);
+}
+.diag-chip {
+  display: inline-block;
+  padding: 2px 8px;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  background: var(--paper);
+  font-size: 12px;
+  font-weight: 600;
+}
+.diag-chip.bye {
+  background: repeating-linear-gradient(
+    -45deg, var(--paper), var(--paper) 4px, #ddd 4px, #ddd 8px);
+}
+.diag-chip.btn {
+  border-radius: var(--radius);
+  background: var(--paper);
+  font-weight: 400;
+}
+.diag-chip.num {
+  font-family: "Courier New", monospace;
+  min-width: 28px;
+  text-align: center;
+}
+.diag-chip.tb {
+  border-style: dashed;
+  background: var(--paper);
+}
+.diag-arrow {
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0 2px;
+}
+.diag-label {
+  font-size: 12px;
+}
+.diag-label.good {
+  color: #146;
+  font-weight: 600;
+}
+.diag-label.bad {
+  color: #722;
+  text-decoration: line-through;
+}
+.diag-label.small {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* ---------- 詳細設定 (大会作成) ---------- */
+.advanced-section {
+  border: 2px dashed var(--ink);
+  border-radius: var(--radius);
+  padding: 8px 14px 4px;
+  margin-bottom: 16px;
+}
+.advanced-section > summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 6px 0;
+  list-style: none;
+}
+.advanced-section > summary::-webkit-details-marker { display: none; }
+.advanced-section > summary::before {
+  content: "▸ ";
+  display: inline-block;
+  transition: transform 0.15s;
+}
+.advanced-section[open] > summary::before {
+  content: "▾ ";
+}
+.advanced-body {
+  padding: 8px 0 12px;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.radio-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 6px 8px;
+  border: 1.5px dashed transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 400;
+}
+.radio-option:hover {
+  background: var(--accent-bg);
+}
+.radio-option input[type="radio"] {
+  margin-top: 4px;
+  accent-color: var(--ink);
+}
+.radio-label {
+  font-weight: 600;
+  font-size: 14px;
+}
+.radio-hint {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  font-weight: 400;
+  cursor: pointer;
+}
+.checkbox-row input[type="checkbox"] {
+  accent-color: var(--ink);
+  width: 18px;
+  height: 18px;
+}
+
+.points-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.points-cell label {
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+.points-cell input {
+  width: 100%;
+}
+
+.tb-order-display {
+  margin-top: 4px;
+  font-size: 12px;
+}
+
+/* 勝-負-分 の配色 */
+.record .win { color: var(--yes); font-weight: 700; }
+.record .loss { color: var(--no); font-weight: 700; }
+.record .sep { color: var(--muted); }
+
+/* 目標到達バナー */
+.target-reached {
+  background: var(--warn-soft);
+  border: 2px dashed var(--warn);
+  border-radius: var(--radius);
+  padding: 6px 10px;
+  margin-top: 8px;
+  color: var(--warn-hover);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+/* 大会名インライン編集 */
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.title-row h2 {
+  margin: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+  flex: 1;
+}
+.title-row .edit-btn {
+  box-shadow: none;
+  padding: 4px 10px;
+  font-size: 13px;
+}
+.title-edit {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.title-edit input {
+  flex: 1 1 200px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* ゲームスコア入力 */
+.game-score-input {
+  grid-column: 1 / 4;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+.game-score-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.game-score-cell span {
+  font-size: 11px;
+}
+.game-score-cell input {
+  width: 60px;
+  text-align: center;
+  font-size: 18px;
+  padding: 4px;
+}
+.game-score-sep {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 0 4px;
+}
+.game-score-result {
+  width: 100%;
+  text-align: center;
+  margin-top: 4px;
+}
+
+/* ---------- Rounds input (大会作成) ---------- */
+.rounds-input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.rounds-input-row input {
+  flex: 0 1 120px;
+}
+.rounds-input-row button {
+  flex: 0 0 auto;
+}
+
+/* ---------- Player Card Input (大会作成) ---------- */
+.tabs.tabs-inline {
+  margin-bottom: 8px;
+  border-bottom-width: 1.5px;
+}
+.player-cards-input {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 8px;
+  margin: 8px 0;
+}
+.player-card-input {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}
+.player-card-input input {
+  flex: 1;
+  border: none;
+  border-bottom: 1.5px dashed var(--ink);
+  border-radius: 0;
+  padding: 4px 2px;
+  background: transparent;
+  font-size: 15px;
+}
+.player-card-input input:focus {
+  outline: none;
+  border-bottom-style: solid;
+}
+.player-card-input button {
+  flex: 0 0 auto;
+  padding: 2px 8px;
+  font-size: 14px;
+}
+
+/* ---------- Empty Hero ---------- */
+.panel.hero {
+  text-align: center;
+  padding: 48px 24px;
+  margin-top: 40px;
+  border-width: 3px;
+  border-style: double;
+}
+.hero-title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.hero-title::before,
+.hero-title::after {
+  content: "――";
+  color: var(--ink);
+  margin: 0 12px;
+  font-weight: 400;
+}
+.hero-lead {
+  color: var(--ink-soft);
+  font-size: 15px;
+  white-space: pre-line;
+  margin: 0 0 28px;
+}
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.hero-button {
+  font-size: 17px;
+  padding: 14px 28px;
+  letter-spacing: 0.06em;
+  box-shadow: 3px 4px 0 rgba(0, 0, 0, 0.9);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  :root { --grid-size: 20px; }
+  .match { grid-template-columns: 1fr; text-align: center; }
+  .match .name.right { text-align: center; }
+  .header-inner h1 { font-size: 19px; }
+}

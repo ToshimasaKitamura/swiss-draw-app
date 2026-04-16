@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="スイスイドロー工房 — 手書き風UIのスイスドロー大会管理アプリ。ブラウザだけで動作します。" />
+  <title>スイスイドロー工房</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yomogi&family=Klee+One:wght@400;600&family=Kaisei+Decol:wght@400;700&display=swap" />
+
+  <!--
+    Google AdSense 配置手順:
+    1. AdSenseの審査に通った後、YOUR_ADSENSE_CLIENT を自分のパブリッシャーID (ca-pub-xxxxxxxx) に差し替え
+    2. 下記の script タグのコメントを外す
+    3. 各 .ad-slot 内の <ins> タグのコメントを外し、data-ad-slot を各広告ユニットIDに差し替え
+  -->
+  <!--
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=YOUR_ADSENSE_CLIENT"
+          crossorigin="anonymous"></script>
+  -->
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <h1>スイスイドロー工房</h1>
+    </div>
+  </header>
+
+  <div class="ad-slot ad-header" aria-label="広告">
+    <!--
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="YOUR_ADSENSE_CLIENT"
+         data-ad-slot="HEADER_SLOT_ID"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    -->
+    <span class="ad-placeholder">広告スペース (Header)</span>
+  </div>
+
+  <main id="main" class="container"></main>
+
+  <div class="ad-slot ad-footer" aria-label="広告">
+    <!--
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="YOUR_ADSENSE_CLIENT"
+         data-ad-slot="FOOTER_SLOT_ID"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    -->
+    <span class="ad-placeholder">広告スペース (Footer)</span>
+  </div>
+
+  <footer class="site-footer">
+    <small>データはすべてご利用のブラウザ内(localStorage)に保存されます。</small>
+  </footer>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

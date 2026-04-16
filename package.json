@@ -1,0 +1,17 @@
+{
+  "name": "suisui-draw-koubou",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "スイスイドロー工房 — 手書き風UIのスイスドロー大会マネージャー",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4",
+    "vite": "^5.4.10"
+  }
+}
