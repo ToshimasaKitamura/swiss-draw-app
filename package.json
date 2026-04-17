@@ -1,7 +1,7 @@
 {
   "name": "suisui-draw-koubou",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "description": "スイスイドロー工房 — 手書き風UIのスイスドロー大会マネージャー",
   "scripts": {
