@@ -3,8 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="スイスイドロー工房 — 手書き風UIのスイスドロー大会管理アプリ。ブラウザだけで動作します。" />
-  <title>スイスイドロー工房</title>
+  <meta name="description" content="スイスイドロー工房 — 手書き風UIのスイスドロー大会管理アプリ。ブラウザだけで動作、無料、登録不要。" />
+  <meta name="keywords" content="スイスドロー,大会管理,トーナメント,ペアリング,Swiss Draw,対戦表,ボードゲーム,TCG" />
+  <meta name="author" content="スイスイドロー工房" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="canonical" href="https://toshimasakitamura.github.io/swiss-draw-app/" />
+
+  <!-- favicon -->
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+
+  <!-- OGP -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="スイスイドロー工房" />
+  <meta property="og:description" content="手書き風UIのスイスドロー大会管理アプリ。ブラウザだけで動作、無料、登録不要。" />
+  <meta property="og:url" content="https://toshimasakitamura.github.io/swiss-draw-app/" />
+  <meta property="og:image" content="https://toshimasakitamura.github.io/swiss-draw-app/ogp.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="スイスイドロー工房" />
+  <meta property="og:locale" content="ja_JP" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="スイスイドロー工房" />
+  <meta name="twitter:description" content="手書き風UIのスイスドロー大会管理アプリ。ブラウザだけで動作、無料、登録不要。" />
+  <meta name="twitter:image" content="https://toshimasakitamura.github.io/swiss-draw-app/ogp.svg" />
+
+  <!-- 構造化データ (WebApplication) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "スイスイドロー工房",
+    "url": "https://toshimasakitamura.github.io/swiss-draw-app/",
+    "description": "手書き風UIのスイスドロー大会管理アプリ。ブラウザだけで動作、無料、登録不要。",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires a modern web browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "JPY"
+    },
+    "inLanguage": "ja"
+  }
+  </script>
+
+  <title>スイスイドロー工房 — スイスドロー大会管理アプリ</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yomogi&family=Klee+One:wght@400;600&family=Kaisei+Decol:wght@400;700&display=swap" />
@@ -27,8 +72,9 @@
     </div>
   </header>
 
+  <!-- AdSense 広告枠: 審査通過後にコメントを外して有効化 -->
+  <!--
   <div class="ad-slot ad-header" aria-label="広告">
-    <!--
     <ins class="adsbygoogle"
          style="display:block"
          data-ad-client="YOUR_ADSENSE_CLIENT"
@@ -36,14 +82,14 @@
          data-ad-format="auto"
          data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    -->
-    <span class="ad-placeholder">広告スペース (Header)</span>
   </div>
+  -->
 
   <main id="main" class="container"></main>
 
+  <!-- AdSense 広告枠: 審査通過後にコメントを外して有効化 -->
+  <!--
   <div class="ad-slot ad-footer" aria-label="広告">
-    <!--
     <ins class="adsbygoogle"
          style="display:block"
          data-ad-client="YOUR_ADSENSE_CLIENT"
@@ -51,9 +97,8 @@
          data-ad-format="auto"
          data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    -->
-    <span class="ad-placeholder">広告スペース (Footer)</span>
   </div>
+  -->
 
   <footer class="site-footer">
     <small>データはすべてご利用のブラウザ内(localStorage)に保存されます。</small>
