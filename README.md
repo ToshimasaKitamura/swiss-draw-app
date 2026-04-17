@@ -25,7 +25,7 @@
 
 - **Vite 5** + **TypeScript 5**(フレームワーク不使用、約 12KB gzip)
 - **Google Fonts**: Yomogi(手書き風)
-- **GitHub Actions** による自動ビルド&デプロイ
+- **AWS S3 + CloudFront** によるホスティング
 
 ## 開発
 
@@ -63,32 +63,19 @@ src/
     └── tournament.ts    # 大会進行(順位表・履歴・参加者管理)
 ```
 
-## ブランチ戦略 & デプロイ
+## デプロイ
 
-| ブランチ | 役割 |
-|---|---|
-| `develop` | 開発用 |
-| `main` | リリース用(push で自動デプロイ) |
-| `gh-pages` | GitHub Pages 公開用(自動更新) |
+### 本番環境
 
-### デプロイフロー
+- **URL**: https://witchcraft-swiss-draw-koubou.com
+- **ホスティング**: AWS S3 + CloudFront
 
-1. `develop` で作業
-2. `main` への Pull Request を作成 → マージ
-3. GitHub Actions が自動で:
-   - ビルド(`npm run build`)
-   - バージョンタグ付け(SemVer)
-   - `gh-pages` へデプロイ
+### デプロイ手順
 
-### バージョンタグの自動付与
-
-`main` への push ごとに SemVer タグが自動で付きます:
-
-| マージコミットメッセージ | 動作 |
-|---|---|
-| 通常 | パッチバンプ(例: `v0.1.3` → `v0.1.4`) |
-| `[minor]` を含む | マイナーバンプ(例: `v0.1.4` → `v0.2.0`) |
-| `[major]` を含む | メジャーバンプ(例: `v0.2.0` → `v1.0.0`) |
+```bash
+npm run build
+aws s3 sync dist/ s3://swiss-draw-koubou --delete
+```
 
 ## データの永続化
 
