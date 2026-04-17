@@ -282,7 +282,8 @@ export function startLegacyTournament(): void {
 export function exportJSON(): void {
   const t = currentTournament();
   if (!t) return;
-  const blob = new Blob([JSON.stringify(t, null, 2)], { type: 'application/json' });
+  const bom = new Uint8Array([0xEF, 0xBB, 0xBF]);
+  const blob = new Blob([bom, JSON.stringify(t, null, 2)], { type: 'application/json;charset=utf-8' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
