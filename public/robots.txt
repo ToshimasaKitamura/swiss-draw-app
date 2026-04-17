@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://toshimasakitamura.github.io/swiss-draw-app/sitemap.xml
+Sitemap: https://witchcraft-swiss-draw-koubou.com/sitemap.xml
