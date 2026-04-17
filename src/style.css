@@ -46,6 +46,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 
@@ -112,8 +113,11 @@ a { color: var(--ink); text-decoration: underline wavy; }
 .container {
   flex: 1;
   max-width: 960px;
+  width: 100%;
   margin: 0 auto;
   padding: 20px 16px 40px;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .site-footer {
@@ -145,6 +149,8 @@ a { color: var(--ink); text-decoration: underline wavy; }
   padding: 16px;
   margin-bottom: 20px;
   box-shadow: var(--shadow);
+  overflow: hidden;
+  max-width: 100%;
 }
 .panel h2 {
   margin-top: 0;
@@ -277,7 +283,15 @@ th {
 tbody tr:nth-child(even) { background: #f7f7f7; }
 tbody tr:hover { background: #ececec; }
 
-.table-wrap { overflow-x: auto; }
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+}
+.table-wrap table {
+  min-width: 500px;
+  width: max-content;
+}
 
 /* ---------- Player list ---------- */
 .player-list {
@@ -809,6 +823,7 @@ select {
   margin-bottom: 16px;
   border-bottom: none;
   padding-bottom: 0;
+  white-space: nowrap;
 }
 .hero-title::before,
 .hero-title::after {
@@ -816,6 +831,17 @@ select {
   color: var(--ink);
   margin: 0 12px;
   font-weight: 400;
+}
+@media (max-width: 600px) {
+  .hero-title {
+    font-size: 18px;
+    white-space: normal;
+  }
+  .hero-title::before,
+  .hero-title::after {
+    display: block;
+    margin: 8px auto;
+  }
 }
 .hero-lead {
   color: var(--ink-soft);
